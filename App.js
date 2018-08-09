@@ -13,6 +13,7 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 
@@ -48,8 +49,9 @@ const styles = {
   },
 
   avatar:{
-    //position: absolute,
-    
+    width: 60,
+    height: 60,
+    borderStyle: "groove",
   }
 }
 
@@ -82,6 +84,15 @@ class App extends Component{
 } 
 
 class Vista2 extends Component  {
+
+  eliminarTutor(){
+    fetch('borrar_tutor.php', {
+      method: 'POST',
+          headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+          },
+    })
+  }
 
   constructor(props) {
     super(props);
@@ -176,6 +187,11 @@ class Vista2 extends Component  {
           </TableRow>
         </TableBody>
       </Table>
+
+      <Button onClick={this.eliminarTutor()} variant="raised"  color="secondary" style ={styles.boton}>
+         Eliminar 
+      <DeleteIcon style={{marginLeft: 10}}/>
+      </Button>
     </Paper>
 
     )
